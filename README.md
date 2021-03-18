@@ -51,7 +51,7 @@
 | ------------- | ------------- | ------------------------------ |
 | user_id       | references    | null: false, foreign_key: true |
 | item_id       | references    | null: false, foreign_key: true |
-| created_at    | datetime      | null: false, foreign_key: true |
+| created_at    | datetime      | null: false                    |
 
 
 ### Association
@@ -65,7 +65,7 @@
 
 | Column        | Type          | Options                        |
 | ------------- | ------------- | ------------------------------ |
-| postal_code   | ActiveStorage | null: false                    |
+| postal_code   | integer       | null: false                    |
 | prefectures   | string        | null: false                    |
 | city          | string        | null: false                    |
 | street        | string        | null: false                    |
