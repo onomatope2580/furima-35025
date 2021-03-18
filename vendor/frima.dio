@@ -1,6 +1,6 @@
 <mxfile>
     <diagram id="AjwPEL5yVduMmE8dPFdg" name="ページ1">
-        <mxGraphModel dx="728" dy="680" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="267" dy="520" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -24,7 +24,7 @@
                 <mxCell id="14" value="addresses" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=20;" parent="1" vertex="1">
                     <mxGeometry x="520" y="640" width="240" height="240" as="geometry"/>
                 </mxCell>
-                <mxCell id="17" value="- postal_code&#10;- prefectures&#10;- city&#10;- street&#10;- building&#10;- tel&#10;- purchase" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=20;" parent="14" vertex="1">
+                <mxCell id="17" value="- postal_code&#10;- delivery_from_id&#10;- city&#10;- street&#10;- building&#10;- tel&#10;- purchase" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=20;" parent="14" vertex="1">
                     <mxGeometry y="26" width="240" height="214" as="geometry"/>
                 </mxCell>
                 <mxCell id="21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontSize=20;startArrow=ERone;startFill=0;endArrow=ERone;endFill=0;" parent="1" source="13" edge="1">
