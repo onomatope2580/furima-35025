@@ -105,7 +105,13 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages).to include("Last name k can't be blank")
     end
 
-    it 'last_name_kにカタカナ以外の文字が混ざっていたら登録できないこと' do
+    it 'last_name_kが半角文字なら登録できないこと' do
+      @user.last_name_k = "tamura"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Last name k is invalid")
+    end
+
+    it 'last_name_kにカタカナ以外の全角文字が混ざっていたら登録できないこと' do
       @user.last_name_k = "タムら"
       @user.valid?
       expect(@user.errors.full_messages).to include("Last name k is invalid")
@@ -117,7 +123,13 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages).to include("First name k can't be blank")
     end
 
-    it 'first_name_kにカタカナ以外の文字が混ざっていたら登録できないこと' do
+    it 'first_name_kが半角文字なら登録できないこと' do
+      @user.first_name_k = "issei"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("First name k is invalid")
+    end
+
+    it 'first_name_kにカタカナ以外の全角文字が混ざっていたら登録できないこと' do
       @user.first_name_k = "イッセい"
       @user.valid?
       expect(@user.errors.full_messages).to include("First name k is invalid")
