@@ -1,10 +1,9 @@
 class Item < ApplicationRecord
-
   with_options presence: true do
     validates :image
     validates :name
     validates :description
-    validates_inclusion_of :price, in:300..9999999
+    validates_inclusion_of :price, in: 300..9_999_999
   end
 
   with_options numericality: { other_than: 1 } do
@@ -24,5 +23,4 @@ class Item < ApplicationRecord
   belongs_to :delivery_fee
   belongs_to :delivery_from
   belongs_to :delivery_day
-
 end
