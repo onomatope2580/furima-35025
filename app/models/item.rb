@@ -9,7 +9,6 @@ class Item < ApplicationRecord
     validates :delivery_from_id
     validates :delivery_day_id
     validates :price
-    validates :user, foreign_key: true
   end
 
   belongs_to :user
