@@ -58,26 +58,26 @@ RSpec.describe Item, type: :model do
       expect(@item.errors.full_messages).to include('Delivery day must be other than 1')
     end
 
-    it 'peiceが空では登録できないこと' do
+    it 'priceが空では登録できないこと' do
       @item.price = ' '
       @item.valid?
       expect(@item.errors.full_messages).to include('Price is not included in the list')
     end
 
-    it 'peiceが全角では登録できないこと' do
-      @item.price = '３００'
+    it 'priceが全角では登録できないこと' do
+      @item.price = ３００
       @item.valid?
       expect(@item.errors.full_messages).to include('Price is not included in the list')
     end
 
-    it 'peiceが299以下では登録できないこと' do
-      @item.price = '299'
+    it 'priceが299以下では登録できないこと' do
+      @item.price = 299
       @item.valid?
       expect(@item.errors.full_messages).to include('Price is not included in the list')
     end
 
-    it 'peiceが10000000以上では登録できないこと' do
-      @item.price = '10000000'
+    it 'priceが10000000以上では登録できないこと' do
+      @item.price = 10000000
       @item.valid?
       expect(@item.errors.full_messages).to include('Price is not included in the list')
     end
