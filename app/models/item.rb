@@ -8,7 +8,7 @@ class Item < ApplicationRecord
     validates :delivery_fee_id
     validates :delivery_from_id
     validates :delivery_day_id
-    validates :price
+    validates :price, format: { with: /[3-9][0-9]{2}|[1-9][0-9]{3,6}/ }
   end
 
   belongs_to :user
