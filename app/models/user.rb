@@ -13,12 +13,13 @@ class User < ApplicationRecord
     validates :last_name
     validates :first_name
   end
-  
+
   with_options presence: true, format: { with: /\A[ァ-ヶ一]+\z/ } do
     validates :last_name_k
     validates :first_name_k
   end
 
-  validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i }
+  validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i }
 
+  has_many :items
 end
