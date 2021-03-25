@@ -10,6 +10,7 @@ class PurchasesController < ApplicationController
   def create
     @purchase_address = PurchaseAddress.new(purchase_address_params)
     if @purchase_address.valid?
+      pay_item
       @purchase_address.save
       redirect_to root_path
     else
@@ -20,7 +21,7 @@ class PurchasesController < ApplicationController
   private
 
   def purchase_address_params
-    params.require(:purchase_address).permit(:postal_code, :delivery_from_id, :city, :street, :building, :tel).merge(user_id: current_user.id, item_id: params[:item_id])
+    params.require(:purchase_address).permit(:card_number, :card_exp_month, :card_exp_year, :card_cvc, :postal_code, :delivery_from_id, :city, :street, :building, :tel).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
   end
 
   def find_item
@@ -29,5 +30,14 @@ class PurchasesController < ApplicationController
 
   def user_redirection
     redirect_to root_path if current_user.id == @item.user.id
+  end
+
+  def pay_item
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp::Charge.create(
+      amount: @item.price,
+      card: purchase_address_params[:token],
+      currency: 'jpy'
+    )
   end
 end

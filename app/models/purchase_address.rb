@@ -1,6 +1,6 @@
 class PurchaseAddress
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :postal_code, :delivery_from_id, :city, :street, :building, :tel, :purchase_id
+  attr_accessor :user_id, :item_id, :card_number, :card_exp_month, :card_exp_year, :card_cvc, :postal_code, :delivery_from_id, :city, :street, :building, :tel, :token
 
   with_options presence: true do
     validates :user_id
@@ -10,8 +10,9 @@ class PurchaseAddress
     validates :delivery_from_id, numericality: { other_than: 1 }
     validates :city
     validates :street
-    validates :tel, format: {with: /[0-9]{ ,11}/}
-    validates :purchase_id
+    validates :tel, format: {with: /[0-9]{10,11}/}
+
+    validates :token
   end
 
   def save
