@@ -69,7 +69,7 @@ RSpec.describe PurchaseAddress, type: :model do
       expect(@purchase_address.errors.full_messages).to include("Tel is invalid")
     end
 
-    it 'telが半角英数字なら登録できないこと' do
+    it 'telが半角英字なら登録できないこと' do
       @purchase_address.tel = "abcdefghijk"
       @purchase_address.valid?
       expect(@purchase_address.errors.full_messages).to include("Tel is invalid")
