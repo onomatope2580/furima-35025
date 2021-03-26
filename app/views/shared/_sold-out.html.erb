@@ -1,0 +1,7 @@
+<% purchases.each do |purchase| %>
+                <% if purchase.item_id == item.id %>
+                  <div class='sold-out'>
+                    <span>Sold Out!!</span>
+                  </div>
+                <% end %>
+              <% end %>

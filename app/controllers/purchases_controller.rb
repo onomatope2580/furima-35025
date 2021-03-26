@@ -1,6 +1,7 @@
 class PurchasesController < ApplicationController
   before_action :authenticate_user!
   before_action :find_item
+  before_action :purchase_record
   before_action :user_redirection
 
   def new
@@ -28,8 +29,14 @@ class PurchasesController < ApplicationController
     @item = Item.find(params[:item_id])
   end
 
+  def purchase_record
+    @purchase = Purchase.exists?(item_id: @item.id)
+  end
+
   def user_redirection
-    redirect_to root_path if current_user.id == @item.user.id
+    if (current_user.id == @item.user.id) || (@purchase == true)
+      redirect_to root_path
+    end
   end
 
   def pay_item

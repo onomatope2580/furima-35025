@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :find_item, only: [:show, :edit, :update, :destroy]
+  before_action :all_purchases, only: [:index, :show]
+  before_action :purchase_record, only: [:show,:edit, :update, :destroy]
   before_action :user_redirection, only: [:edit, :update, :destroy]
 
   def index
@@ -50,7 +52,17 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
+  def all_purchases
+    @purchases = Purchase.all
+  end
+
+  def purchase_record
+    @purchase = Purchase.exists?(item_id: @item.id)
+  end
+
   def user_redirection
-    redirect_to root_path if current_user.id != @item.user.id
+      if (current_user.id != @item.user.id) || (@purchase == true)
+        redirect_to root_path
+      end
   end
 end
