@@ -1,6 +1,6 @@
 class PurchaseAddress
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :card_number, :card_exp_month, :card_exp_year, :card_cvc, :postal_code, :delivery_from_id, :city, :street, :building, :tel, :token
+  attr_accessor :user_id, :item_id, :postal_code, :delivery_from_id, :city, :street, :building, :tel, :token
 
   with_options presence: true do
     validates :user_id

@@ -19,6 +19,12 @@ const pay = () => {
         const token000 = `<input value=${token} name='token' type="hidden">`;
         form.insertAdjacentHTML("beforeend", token000);
       }
+
+      document.getElementById("card-number").removeAttribute("name");
+      document.getElementById("card-exp-month").removeAttribute("name");
+      document.getElementById("card-exp-year").removeAttribute("name");
+      document.getElementById("card-cvc").removeAttribute("name");
+
       form.submit();
     });
   });

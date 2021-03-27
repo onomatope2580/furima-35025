@@ -3,7 +3,10 @@ require 'rails_helper'
 RSpec.describe PurchaseAddress, type: :model do
   describe '購入機能' do
     before do
-      @purchase_address = FactoryBot.build(:purchase_address)
+      @user = FactoryBot.create(:user)
+      @item = FactoryBot.create(:item)
+      @purchase_address = FactoryBot.build(:purchase_address, user_id: @user.id, item_id: @item.id)
+      sleep 0.1
     end
 
     it '全ての項目が存在し、かつ入力条件を満たしているとき登録できること' do
@@ -17,7 +20,7 @@ RSpec.describe PurchaseAddress, type: :model do
     end
 
     it 'postal_codeにハイフンがないと登録できないこと' do
-      @purchase_address.postal_code = 1234567
+      @purchase_address.postal_code = "abcdefg"
       @purchase_address.valid?
       expect(@purchase_address.errors.full_messages).to include("Postal code is invalid")
     end
